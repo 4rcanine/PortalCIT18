@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EnrollmentController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes (like welcome page)
@@ -20,6 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/enrollment', [EnrollmentController::class, 'create'])->name('enrollment.create'); // Page to show subjects
+    Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enrollment.store'); 
 });
+
+
 
 require __DIR__.'/auth.php'; // Includes login, register, etc. routes
